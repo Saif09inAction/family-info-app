@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALMANI'S</title>
+    <link rel="stylesheet" href="style.cs/main.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-section" class="container">
+        <div class="auth-container">
+            <h2>LOGIN</h2>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Page -->
+    <div id="signup-section" class="container" style="display:none;">
+        <div class="auth-container">
+            <h2>Create Account</h2>
+            <form id="signup-form">
+                <input type="text" id="signup-name" placeholder="Full Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="file" id="signup-profile-photo" accept="image/*" placeholder="Profile Photo">
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Homepage -->
+    <div id="homepage" style="display:none;">
+        <div class="homepage-container">
+            <div class="sidebar">
+                <!-- Profile Section -->
+                <div class="profile-section">
+                    <h3>My Profile</h3>
+                    <div id="user-profile-details"></div>
+                    <button id="edit-profile-btn">Edit Profile</button>
+                </div>
+
+                <!-- Navigation -->
+                <div class="sidebar-nav">
+                    <button id="members-btn">Members</button>
+                    <button id="birthdays-btn">Birthdays 🎂</button>
+                    <button id="family-news-btn">Family News</button>
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="header">
+                    <h2>SALMANI'S Dashboard</h2>
+                    <div class="header-actions">
+                        <button id="add-member-btn">+ Add Member</button>
+                        <button id="edit-members-btn">Manage Members</button>
+                    </div>
+                </div>
+
+                <!-- Members List -->
+                <div id="members-list"></div>
+
+                <!-- Family News Section -->
+                <div id="family-news-list" style="display:none;">
+                    <div class="header">
+                        <button id="add-news-btn">+ Add News</button>
+                    </div>
+                </div>
+
+                <!-- Members Section -->
+                <div id="members-section" style="display:none;">
+                    <div class="section-header">
+                        <h2>Family Members</h2>
+                        <div class="header-actions">
+                            <button id="add-member-btn">+ Add Member</button>
+                            <button id="edit-members-btn">Edit Members</button>
+                            <button id="birthdays-btn">Birthdays 🎂</button>
+                        </div>
+                        <div id="members-list">
+                            <!-- Members will be dynamically populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Member Modal -->
+    <div id="add-member-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Add New Family Member</h2>
+            <form id="add-member-form">
+                <input type="file" id="member-profile-photo" accept="image/*" placeholder="Profile Photo">
+                <input type="text" id="member-name" placeholder="Full Name" required>
+                <input type="date" id="member-dob" placeholder="Date of Birth" required>
+                <input type="tel" id="member-contact" placeholder="Contact Number">
+                <input type="text" id="member-hobbies" placeholder="Hobbies">
+                <input type="text" id="member-instagram" placeholder="Instagram Handle">
+                <textarea id="member-description" placeholder="About the member"></textarea>
+                <button type="submit">Add Member</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add News Modal -->
+    <div id="add-news-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Add Family News</h2>
+            <form id="add-news-form">
+                <input type="text" id="news-topic" placeholder="Topic" required>
+                <input type="date" id="news-date" placeholder="Date" required>
+                <input type="time" id="news-time" placeholder="Time" required>
+                <textarea id="news-body" placeholder="Main Body of News" required></textarea>
+                <button type="submit">Submit News</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="edit-profile-form">
+                <input type="text" id="edit-name" placeholder="Full Name" required>
+                <input type="date" id="edit-dob" placeholder="Date of Birth">
+                <input type="tel" id="edit-contact" placeholder="Contact Number">
+                <input type="text" id="edit-hobbies" placeholder="Hobbies">
+                <input type="text" id="edit-instagram" placeholder="Instagram Handle">
+                <textarea id="edit-description" placeholder="About yourself"></textarea>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Members Modal -->
+    <div id="edit-members-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Manage Family Members</h2>
+            <div id="editable-members-list"></div>
+        </div>
+    </div>
+
+    <!-- Birthdays Modal -->
+    <div id="birthdays-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Upcoming Birthdays 🎂</h2>
+            <div id="birthdays-list" class="birthdays-container">
+                <!-- Birthdays will be dynamically populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
+    <!-- App Scripts -->
+    <script src="scripts/firebase-config.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

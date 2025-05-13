@@ -1,0 +1,582 @@
+:root {
+    --primary-color: #604392;
+    --background-color: lch(46.02% 32.61 253.93)(#bd7e2c);
+    --text-color: #7e1bb7;
+    --sidebar-background: #d4d3de;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #0c0c0d;
+}
+
+/* Homepage Styles */
+.homepage-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-background);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 19px;
+    background-color: rgb(#305066);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#add-member-btn {
+    width: auto;
+    padding: 10px 15px;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #080505;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.member-card {
+    background-color: #bfb9de;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Family News Styles */
+.news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.news-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    transform: scale(1.02);
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.news-topic {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.news-meta {
+    display: flex;
+    gap: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.news-body {
+    color: #444;
+    line-height: 1.6;
+}
+
+.no-news {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+/* News Actions Styles */
+.news-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+}
+
+.edit-news-btn,
+.delete-news-btn {
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.edit-news-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.edit-news-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-news-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+.delete-news-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Edit News Overlay */
+.edit-news-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.edit-news-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#edit-news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#edit-news-form input,
+#edit-news-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#edit-news-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-actions button {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-actions button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.form-actions button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+.form-actions button[type="button"]:hover {
+    background-color: #545b62;
+}
+
+/* Manage Members Styles */
+.header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#edit-members-modal .modal-content {
+    max-width: 600px;
+    width: 100%;
+}
+
+.editable-member-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.editable-member-item:hover {
+    background-color: #f0f0f0;
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.member-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.member-contact {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.member-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-member-btn,
+.delete-member-btn {
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.edit-member-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.delete-member-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+#edit-member-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#edit-member-form input,
+#edit-member-form textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#edit-member-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#edit-member-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Profile Photo Styles */
+.user-profile-photo,
+.member-profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile-photo img,
+.member-profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#signup-form input[type="file"],
+#add-member-form input[type="file"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.member-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.member-details {
+    flex-grow: 1;
+}
+
+.user-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-profile-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Birthdays Section Styles */
+#birthdays-list .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#birthdays-list .header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.birthdays-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
+.birthday-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.birthday-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.urgent-birthday {
+    border-color: #ff4d4d;
+    background-color: #fff0f0;
+}
+
+.birthday-card-content {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.birthday-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.birthday-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.birthday-details {
+    flex-grow: 1;
+}
+
+.birthday-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.birthday-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.birthday-rank {
+    background-color: #007bff;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+}
+
+.birthday-details p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.birthday-countdown {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.birthday-countdown.urgent {
+    color: #ff4d4d;
+}
+
+.no-birthdays {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+#birthdays-modal .modal-content {
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Login Error Styles */
+.login-error {
+    background-color: #ffdddd;
+    color: #ff0000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid #ff0000;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
